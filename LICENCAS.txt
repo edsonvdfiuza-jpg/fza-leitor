@@ -1,0 +1,14 @@
+FZA Leitor PGN — licenças
+
+O FZA Leitor PGN é software livre, distribuído sob a GNU GPL v3 (a mesma do
+FZA Chess Database). Componentes de terceiros incluídos:
+
+1. Stockfish 19 (versão "lite single-threaded" do Stockfish.js)
+   Autores: os desenvolvedores do Stockfish; conversão para WebAssembly por
+   Nathan Rugg (https://github.com/nmrugg/stockfish.js).
+   Licença: GNU GPL v3 — texto completo em vendor/stockfish/Copying.txt.
+
+2. Peças "Merida" (pasta pecas/merida)
+   Autor: Armando Hernandez Marroquin.
+   Licença: GNU GPL v2 ou posterior (https://www.gnu.org/licenses/gpl-2.0.txt).
+   Arquivos obtidos do projeto Lichess (https://github.com/lichess-org/lila).

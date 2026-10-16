@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2F5249">
+<meta name="description" content="Leitor gratuito de livros de xadrez em PGN, com tabuleiro e Stockfish.">
+<title>FZA Leitor PGN</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icones/icone-192.png">
+<link rel="apple-touch-icon" href="icones/icone-192.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<!-- Tela inicial: biblioteca -->
+<section id="inicio" class="tela">
+  <header class="capa-app">
+    <img src="icones/icone-192.png" alt="" width="56" height="56">
+    <div>
+      <h1>FZA Leitor PGN</h1>
+      <p>Livros de xadrez com tabuleiro e Stockfish</p>
+    </div>
+  </header>
+  <label class="botao-principal">
+    <input id="arquivo" type="file" accept=".pgn,application/x-chess-pgn,application/vnd.chess-pgn,text/plain" hidden>
+    Abrir livro (.pgn)
+  </label>
+  <h2 class="secao">Seus livros</h2>
+  <ul id="biblioteca" class="biblioteca"></ul>
+  <p id="vazio" class="dica" hidden>Nenhum livro ainda. Toque em <b>Abrir livro</b> e escolha um arquivo .pgn do celular.</p>
+  <p class="dica">Recebeu um .pgn no WhatsApp? Com o app instalado, toque no arquivo, depois em <b>Compartilhar</b> e escolha <b>FZA Leitor</b>.</p>
+  <p id="instalar-dica" class="dica" hidden>Para usar como app e sem internet: no Chrome, toque em <b>⋮</b> e depois em <b>Adicionar à tela inicial</b>.</p>
+  <p id="aviso-erro" class="erro" hidden></p>
+</section>
+
+<!-- Tela de leitura -->
+<section id="leitor" class="tela" hidden>
+  <header class="barra">
+    <button id="b-sumario" class="icone" aria-label="Sumário">☰</button>
+    <div class="barra-titulo">
+      <strong id="t-livro"></strong>
+      <span id="t-capitulo"></span>
+    </div>
+    <button id="b-motor" class="icone" aria-label="Stockfish" aria-pressed="false">SF</button>
+    <button id="b-virar" class="icone" aria-label="Virar tabuleiro">⇅</button>
+  </header>
+
+  <div class="corpo-leitor">
+    <section id="area-tabuleiro">
+      <div id="tabuleiro" role="img" aria-label="Tabuleiro"></div>
+      <div id="rascunho" class="rascunho" hidden>
+        <span class="rotulo">Sua análise (não é salva):</span>
+        <span id="rascunho-lances"></span>
+        <button id="b-descartar">Descartar</button>
+      </div>
+      <nav class="navegacao">
+        <button id="b-primeiro" aria-label="Início">⏮</button>
+        <button id="b-anterior" aria-label="Lance anterior">◀</button>
+        <span id="lance-atual"></span>
+        <button id="b-proximo" aria-label="Próximo lance">▶</button>
+        <button id="b-ultimo" aria-label="Fim">⏭</button>
+      </nav>
+      <div id="motor" class="motor" hidden>
+        <div class="motor-topo">
+          <span id="motor-nota" class="nota">…</span>
+          <span id="motor-prof"></span>
+          <span id="motor-aviso"></span>
+        </div>
+        <ol id="motor-linhas"></ol>
+      </div>
+    </section>
+
+    <main id="texto" tabindex="-1"></main>
+  </div>
+
+  <footer class="paginas">
+    <button id="b-pag-ant">◀ Anterior</button>
+    <span id="pag-num"></span>
+    <button id="b-pag-prox">Próxima ▶</button>
+  </footer>
+</section>
+
+<!-- Sumário e ajustes -->
+<div id="sumario" class="gaveta" hidden>
+  <div class="gaveta-painel" role="dialog" aria-label="Sumário">
+    <header>
+      <h2 id="s-titulo"></h2>
+      <p id="s-autor"></p>
+      <button id="b-fechar-sumario" class="icone" aria-label="Fechar">✕</button>
+    </header>
+    <div class="ajustes">
+      <label>Texto <select id="aj-fonte"><option value="0">Pequeno</option><option value="1">Médio</option><option value="2">Grande</option></select></label>
+      <label>Linhas SF <select id="aj-linhas"><option>1</option><option>2</option><option>3</option></select></label>
+      <label>Profundidade <select id="aj-prof"><option>12</option><option>16</option><option>18</option><option>22</option></select></label>
+    </div>
+    <ol id="s-lista" class="sumario-lista"></ol>
+    <button id="b-biblioteca" class="botao-secundario">⌂ Voltar à biblioteca</button>
+  </div>
+</div>
+
+<!-- Escolha de promoção -->
+<div id="promocao" class="gaveta" hidden>
+  <div class="promo-painel" role="dialog" aria-label="Promover peão">
+    <p>Promover para:</p>
+    <div id="promo-opcoes"></div>
+  </div>
+</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
