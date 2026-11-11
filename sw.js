@@ -1,6 +1,6 @@
 // Service worker: guarda o app no celular para funcionar sem internet e
 // recebe arquivos .pgn pelo menu "Compartilhar" do Android.
-const VERSAO = 'fza-leitor-v1';
+const VERSAO = 'fza-leitor-v2';
 const ARQUIVOS = [
   './', 'index.html', 'app.css', 'manifest.webmanifest',
   'js/app.js', 'js/xadrez.js', 'js/pgn.js', 'js/livro.js', 'js/tabuleiro.js', 'js/motor.js', 'js/armazenamento.js',

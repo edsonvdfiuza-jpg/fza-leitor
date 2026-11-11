@@ -187,7 +187,9 @@ function navegar(direcao) {
 }
 
 function irPara(reg, noId = null, rolagem = null) {
-  E.reg = Math.max(0, Math.min(E.livro.registros.length - 1, reg));
+  reg = Math.max(0, Math.min(E.livro.registros.length - 1, reg));
+  if (reg !== E.reg && E.motorLigado) ligarMotor(false);   // outra partida: o Stockfish volta a desligado
+  E.reg = reg;
   const r = registro();
   nosPorId.clear();
   for (const n of todosNos(r.raiz)) nosPorId.set(n.id, n);
